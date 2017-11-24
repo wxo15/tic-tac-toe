@@ -239,6 +239,37 @@ int main()
 					}
 				}
 			}
+			//(double fork)
+			int a[3][3] =
+			{
+				{ 4,0,0 },
+				{ 0,1,0 },
+				{ 0,0,4 },
+			};
+			int b[3][3] =
+			{
+				{ 0,0,4 },
+				{ 0,1,0 },
+				{ 4,0,0 },
+			};
+			for (int c = 0; c < 9; c++) {
+				if (m[c / 3][c % 3] != a[c / 3][c % 3]) {
+					goto SKIP1;
+				}
+			}
+			m[0][1] = 1;
+			goto END;
+		SKIP1:;
+			for (int c = 0; c < 9; c++) {
+				if (m[c / 3][c % 3] != b[c / 3][c % 3]) {
+					goto SKIP2;
+				}
+			}
+			m[0][1] = 1;
+			goto END;
+		SKIP2:;
+
+
 			//creating a fork
 			//edge (2, 4, 6, 8)
 			for (int a = 1; a < 5; a++) {
